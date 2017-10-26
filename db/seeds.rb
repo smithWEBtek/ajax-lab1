@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-articles = Article.create([
+articles = Post.create([
     { title: "Where did you go?", text: "I had to get a toothbrush."},
     { title: "Why I eat grapes", text: "They are very refreshing."},
     { title: "Sally meets Walter", text: "We had a nice lunch."},
