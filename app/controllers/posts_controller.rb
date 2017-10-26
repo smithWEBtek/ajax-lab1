@@ -6,6 +6,8 @@ class PostsController < ApplicationController
   end
  
   def show
+    @comments = @post.comments
+    render 'posts/show', layout: false
   end
  
   def new
@@ -45,6 +47,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :text)
+      params.require(:post).permit(:title, :content)
     end
 end
