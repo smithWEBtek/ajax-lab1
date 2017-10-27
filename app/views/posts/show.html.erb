@@ -14,7 +14,7 @@
     
 <!-- <%#= render @post.comments %> -->
 <p>
-  <a class="load_comments" <%= link_to "Load Comments", post_comments_path(@post) %></a>
+  <a class="load_comments" <%= link_to "Load Comments", post_comments_path(@post), remote: true %></a>
 </p>
 
 <div id="comments"></div>
