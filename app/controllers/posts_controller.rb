@@ -7,7 +7,6 @@ class PostsController < ApplicationController
  
   def show
     @comments = @post.comments
-    render 'posts/show', layout: false
   end
  
   def new

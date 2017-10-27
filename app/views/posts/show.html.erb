@@ -13,8 +13,9 @@
 </p>
     
 <!-- <%#= render @post.comments %> -->
-<%= link_to "Load Comments", post_comments_path(@post) %>
-<!-- <a id='load-comments' href="#">Load Comments</a> -->
+<p>
+  <a class="load_comments" <%= link_to "Load Comments", post_comments_path(@post) %></a>
+</p>
 
 <div id="comments"></div>
 

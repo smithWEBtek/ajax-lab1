@@ -21,55 +21,96 @@
 
 // examples for response of HTML
 
-// ---------1st draft ------ajax low level ---- client side logic model -------------
-// 
-
 // $(document).ready(function(){
 // is the same as this: 
-$(function(){
-  $('#load-comments').on("click", function(e){
-    debugger
 
-    e.preventDefault()
-    $.ajax({
-      method: "GET",
-      url: this.href
-    }).done(function(response){
-      console.log(response)
-    //  document.getElementById("comments2").html = response;
-    })
-  })
-})
+// 
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////--------1st draft ------ajax low level ---- client side logic model -----///////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
-//       $("div#ajax-contacts").html(response);
-//     }).error(function(){
-//       alert("we broke!!!");
-//     });
-//     e.preventDefault();
-//   });
-// });
+// $(function(){
+//   $('a.load_comments').on('click', function(e){
+//     e.preventDefault()
+//     $.ajax({
+//       method: "GET",
+//       url: this.href
+//     }).done(function(response){
+//      document.getElementById("comments").innerHTML = response
+//     }).fail(function(){
+//       alert("we broke!!!")
+//     })
+//   })
+// })
+
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 // refactor at 37:15
 // https://www.youtube.com/watch?v=E8TJmwW5ayQ
 // ---------------------------------------------------------------
 
-// ---------2nd draft ------ajax higher level ----shorthand method - still client side logic ---------------
-    // http://api.jquery.com/jQuery.get/
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+// ---------2nd draft ------ajax higher level ----shorthand method - still client side logic  //////////////////////////////////////////////////////////////////////////////////////
+/////////////////----------- using for -------------//////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
  
 // $(function(){
-//   $("a.load_contacts").on("click", function(e){
-//     $.get(this.href).success(function(response){
-//       $("div#ajax-contacts").html(response);
-//     }).error(function(){
+//   $("a.load_comments").on("click", function(e){
+//     $.get(this.href).done(function(response){
+//       let responseHTML = '<ul>'
+//       for(let i = 0; i < response.length; i++){
+//         let commenter = response[i].commenter
+//         let body = response[i].body
+//         responseHTML += `<li>${commenter}: ${body}</li>`
+//       } 
+//       responseHTML += '</ul>'
+//       $("div#comments").html(responseHTML);
+//     }).fail(function(){
 //       alert("we broke!!!");
 //     });
 //     e.preventDefault();
 //   });
 // }); 
-// ------3rd draft ----------------------------------------------------
+
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////----------- using foreach -------------//////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+ 
+// $(function(){
+//   $("a.load_comments").on("click", function(e){
+//     $.get(this.href).done(function(response){
+//       let responseHTML = '<ul>'
+//       response.forEach(function(element) {
+//         responseHTML += `<li>${element.commenter}: ${element.body}</li>`
+//       }, this);
+//       responseHTML += '</ul>'
+//       $("div#comments").html(responseHTML);
+//     }).fail(function(){
+//       alert("we broke!!!");
+//     });
+//     e.preventDefault();
+//   });
+// }); 
+
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+///////////// ------3rd draft-----------//////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+ 
 // json example follows, ends at 49:30
 // summary at 50:39
-// ----------------------------------------
 //------------------- Server side AJAX model 52:47
 // summary at 57:45
 // to 1:10
@@ -78,13 +119,13 @@ $(function(){
 // pattern 
 //  summary at 1:13
 
-
-// $(function() {
-//   $("a.load_contacts").on("click", function(e){
-//     $.ajax({
-//       url: this.href,
-//       dataType: 'script'
-//       });
-//     e.preventDefault();
-//   });
-// });
+$(function() {
+  $("a.load_comments").on("click", function(e){
+    $.ajax({
+      url: this.href,
+      dataType: 'script'
+      });
+ 
+    e.preventDefault();
+  });
+});

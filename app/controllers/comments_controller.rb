@@ -3,6 +3,12 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @post.comments
+    # render :json => @comments
+    # render layout: false
+    respond_to do |format|
+      format.html {render 'index.html', layout: false}
+      format.js {render 'index.js', layout: false}
+    end 
   end
 
   def show 
