@@ -7,6 +7,7 @@ class PostsController < ApplicationController
  
   def show
     @comments = @post.comments
+    @comment = Comment.new(post_id: @post.id)
   end
  
   def new
@@ -18,7 +19,6 @@ class PostsController < ApplicationController
  
   def create
     @post = Post.new(post_params)
- 
     if @post.save
       redirect_to @post
     else
@@ -36,7 +36,6 @@ class PostsController < ApplicationController
  
   def destroy
     @post.destroy
- 
     redirect_to posts_path
   end
  

@@ -1,27 +1,32 @@
+<p id="notice"><%= notice %></p>
+
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+  <strong>Title:
+  <%= @post.title %></strong>
 </p>
- 
+
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
- 
-<p>
-  <strong>Comments</strong>
-</p>
-    
-<!-- <%#= render @post.comments %> -->
-<p>
-  <a class="load_comments" <%= link_to "Load Comments", post_comments_path(@post), remote: true %></a>
-</p>
 
-<div id="comments"></div>
+<!-- <h4>Comments: </h4> -->
+  <!-- <div id="comments"></div> -->
+  <%= render 'comments/comments' %>
 
+<h4>Add comment: </h4>
+<!-- <%#= form_for(@comment, url: post_comments_path(@post)) do |f| %> -->
 
-<strong>Add a comment:</strong>
-<%= render 'comments/form' %>
- 
+<%= form_for([@post, @comment]) do |f| %>
+  <p><%= f.text_area :content %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+  <!-- <form id="new-comment" action="<%#= post_comments_path(@post, @comment) %>">
+    <p>Commenter: <input type="text" id="commenter"></p>
+    <p>Body: <input type="textarea" id="body"></p>
+    <p><input type="submit"></p>
+  </form> -->
+
 <%= link_to 'Edit Post', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
