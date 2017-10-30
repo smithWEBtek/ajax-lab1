@@ -10,16 +10,17 @@
   <%= @post.content %>
 </p>
 
-<!-- <h4>Comments: </h4> -->
-  <!-- <div id="comments"></div> -->
+<strong>Comments: </strong>
+<div class="comments">
   <%= render 'comments/comments' %>
+</div>
 
-<h4>Add comment: </h4>
+<strong>Add comment:</strong>
 <!-- <%#= form_for(@comment, url: post_comments_path(@post)) do |f| %> -->
 
 <%= form_for([@post, @comment]) do |f| %>
-  <p><%= f.text_area :content %></p>
-  <p><%= f.submit %></p>
+  <%= f.text_area :content %>
+  <%= f.submit %>
 <% end %>
 
   <!-- <form id="new-comment" action="<%#= post_comments_path(@post, @comment) %>">

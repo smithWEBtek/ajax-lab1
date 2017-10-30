@@ -20,9 +20,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @post.comments.build(comment_params)    
+    @comment = @post.comments.new(comment_params)    
     if @comment.save
-      redirect_to @post
+      render 'comments/show_comment', layout: false
     else
       render 'posts/show'
     end
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to post_path@post
+    redirect_to post_path(@post)
   end
 
   private
@@ -40,6 +40,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:content)
+      params.require(:comment).permit(:content, :post_id)
     end
 end

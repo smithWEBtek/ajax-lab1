@@ -8,10 +8,9 @@
 // compiled file.
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
+// about supported directives
+//= require turbolinks
 //= require jquery
 //= require jquery-3.2.1.min
 //= require jquery_ujs
-//= require turbolinks
 //= require ajax-video2

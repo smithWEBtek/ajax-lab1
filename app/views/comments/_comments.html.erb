@@ -1,5 +1,5 @@
 <ol>
   <% @comments.each do |comment| %> 
-  <li><%= comment.content %></li>
+    <li><%= comment.content %> created: <%= comment.created_at %></li>
   <% end %>
 </ol>
