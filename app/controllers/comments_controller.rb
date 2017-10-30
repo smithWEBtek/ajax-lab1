@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new(comment_params)    
     if @comment.save
-      render 'comments/show_comment', layout: false
+      # render 'comments/show_comment', layout: false
+      render 'create.js', layout: false 
     else
       render 'posts/show'
     end

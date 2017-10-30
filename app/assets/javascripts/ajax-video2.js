@@ -5,19 +5,50 @@
 //  C. Take data from AJAX POST request, create corresponding element
 //  D. Send back the HTML/JSON/JS (of the new comment), and inject it to the comment 'ol' on the DOM
 
-$(function(){
-  $('form#new_comment').on('submit', function(e){ 
-    $.ajax({
-      type: "POST",
-      url: this.action,   
-      data: $(this).serialize(),
-      success: function(response){
-        $('#comment_content').val('')
-        var $ol = $("div.comments ol")
-        $ol.append(response)
-      }
-    })
-    e.preventDefault()
-    e.stopImmediatePropagation()
-  })
-})
+////////////////////////////////////////////////////////////////////
+///////////// first way, low level AJAX   //////////////////////////
+////////////////////////////////////////////////////////////////////
+// $(function(){
+//   $('form#new_comment').on('submit', function(e){ 
+//     $.ajax({
+//                     // type: "POST",
+//       type: ($("input[name='_method']").val() || this.method),
+//       url: this.action,   
+//                     // data: {
+//                     //   'authenticity_token': $("input[name='authenticity_token']").val(),
+//                     //   'comment': {
+//                     //     'content': $('#comment_content').val()
+//                     //   }
+//                     // },
+//       data: $(this).serialize(),
+//       success: function(response){
+//         $('#comment_content').val('')
+//         var $ol = $("div.comments ol")
+//         $ol.append(response)
+//       }
+//     })
+//     e.preventDefault()
+//     e.stopImmediatePropagation()
+//   })
+// })
+
+////////////////////////////////////////////////////////////////////
+///////////// 2nd way, using 'remote: true'  ///////////////////////
+////////////////////////////////////////////////////////////////////
+
+// $(function(){
+//   $('form#new_comment').on('submit', function(e){ 
+//     $.ajax({
+//       type: ($("input[name='_method']").val() || this.method),
+//       url: this.action,
+//       data: $(this).serialize(),
+//       success: function(response){
+//         $('#comment_content').val('')
+//         var $ol = $("div.comments ol")
+//         $ol.append(response)
+//       }
+//     })
+//     e.preventDefault()
+//     e.stopImmediatePropagation()
+//   })
+// })
